@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia do PlayStation 2 | 0.01</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis de Cor (Estilo PS2 High-Contrast Digital APRIMORADO) */
+        :root {
+            --cor-fundo-principal: #000014; /* Ultra Dark Blue - Fundo da tela */
+            --cor-fundo-conteudo: #14142B; /* Fundo do Container (Console Panel) */
+            --cor-acento-principal: #00FAFA; /* Bright Cyan (Azul do Menu PS2) - MÁXIMO BRILHO */
+            --cor-acento-secundario: #55FF55; /* Bright Green (Luz de Status/Tip) */
+            --cor-texto: #FFFFFF; /* Texto de Alto Contraste */
+            --cor-texto-secundario: #CCCCCC; /* Cinza claro */
+            --cor-borda: #33334F; /* Borda digital */
+            --cor-alerta: #FFB300; /* Âmbar Gold - Aviso Crítico (Luz Standby) */
+        }
+
+        /* Reseta e Define Padrões Globais (Foco na Rigidez/Retangular) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border-radius: 0; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background-color: var(--cor-fundo-principal); 
+            color: var(--cor-texto-secundario);
+            line-height: 1.4; 
+            font-size: 17px;
+            background-image: radial-gradient(circle at center, rgba(0,0,50,0.5) 0%, var(--cor-fundo-principal) 100%);
+        }
+
+        /* Adição de Estilo para Parágrafos para Distância */
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* 1. Header Simplificado */
+        header {
+            background-color: #000000;
+            color: var(--cor-texto);
+            padding: 15px 20px; /* Padding simplificado */
+            text-align: center;
+            border-bottom: 2px solid var(--cor-acento-principal);
+            /* Importante: Removido o sticky do header, pois a navbar será sticky */
+            position: static; 
+            z-index: 1001;
+        }
+        header h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 0; /* Margin simplificada */
+            color: var(--cor-acento-principal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 0 #000; 
+        }
+
+        /* 1.5. Navbar Adicionada (Nova Seção) */
+        .navbar {
+            background-color: #000000;
+            border-bottom: 2px solid var(--cor-borda);
+            position: sticky; /* Torna a navbar fixa no topo */
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex; /* Layout horizontal */
+            justify-content: center; /* Centraliza os links */
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            padding-left: 0; /* Remove o padding do item de lista geral */
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        .navbar ul li::before {
+            content: none; /* Remove o '»' dos links da navbar */
+        }
+
+        .navbar ul li a {
+            display: block; /* Ocupa todo o espaço do li para o clique */
+            padding: 10px 15px;
+            color: var(--cor-texto-secundario);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 1px solid #1a1a1a;
+            border-right: 1px solid #1a1a1a;
+        }
+
+        .navbar ul li a:hover {
+            background-color: var(--cor-fundo-conteudo);
+            color: var(--cor-acento-principal);
+            text-decoration: none;
+        }
+        
+        /* 2. Conteúdo Principal */
+        main {
+            padding: 20px;
+            max-width: 950px;
+            margin: 0 auto; 
+            flex-grow: 1;
+        }
+
+        .content-section {
+            background-color: var(--cor-fundo-conteudo);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 3px solid var(--cor-borda);
+            /* Importante para o scroll para âncoras (ajustado para a altura da navbar) */
+            scroll-margin-top: 60px; 
+        }
+
+        h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--cor-acento-principal);
+            border-left: 5px solid var(--cor-acento-principal);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--cor-texto);
+            margin-top: 25px;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--cor-borda); 
+        }
+
+        /* NOVO: Estilização para h4 (Sub-Título de Procedimento) */
+        h4 {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--cor-acento-secundario); /* Cor verde para status/passo */
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        a {
+            color: var(--cor-acento-principal);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.1s;
+        }
+        a:hover {
+            color: var(--cor-texto);
+            text-decoration: underline;
+        }
+
+        /* 3. Estilo para Listas Desordenadas */
+        ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        ul li {
+            padding-left: 15px;
+            position: relative;
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+        ul li::before {
+            content: '»'; 
+            color: var(--cor-acento-principal);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 0.8em;
+        }
+        
+        /* NOVO: Estilização para Listas Ordenadas (Passos) */
+        ol {
+            list-style: none;
+            counter-reset: step-counter; /* Inicializa o contador */
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+
+        ol li {
+            counter-increment: step-counter; /* Incrementa o contador para cada item */
+            padding-left: 40px;
+            position: relative;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        ol li::before {
+            content: counter(step-counter) "."; /* Exibe o número do passo */
+            color: var(--cor-acento-secundario); /* Cor verde para o número */
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.1em;
+            border: 1px solid var(--cor-acento-secundario);
+            padding: 0 5px;
+            margin-right: 10px;
+            background-color: #103b10;
+        }
+
+
+        /* 4. Cards (Design de Opções de Menu) */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .card {
+            background: #2a2a44; 
+            padding: 15px;
+            border: 1px solid var(--cor-acento-principal); 
+            transition: background-color 0.1s ease, border-color 0.1s ease;
+        }
+        .card:hover {
+            background-color: #333366; 
+            border-color: var(--cor-texto);
+        }
+        .card h3 {
+            font-size: 1.1em;
+            color: var(--cor-acento-principal);
+            margin-top: 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        /* 5. Caixas de Destaque */
+        .info-box {
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+            border: 2px solid; 
+        }
+        .info-box.warning {
+            background-color: #2b1d00;
+            border-color: var(--cor-alerta);
+            color: #FFECB3;
+        }
+        .info-box.tip {
+            background-color: #0d2b0d;
+            border-color: var(--cor-acento-secundario);
+            color: #CCFFCC;
+        }
+
+        /* 6. Código e Teclas */
+        .code-block {
+            background-color: #000000; 
+            padding: 15px;
+            overflow-x: auto;
+            border: 1px solid var(--cor-acento-secundario); 
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--cor-acento-secundario); 
+            white-space: pre-wrap; /* Garante quebras de linha em textos longos */
+        }
+        
+        #opl-firewall + .code-block {
+            border: 3px solid var(--cor-alerta);
+            background-color: #2b1d00;
+            color: var(--cor-alerta);
+        }
+        
+        kbd {
+            background-color: #333355;
+            color: var(--cor-texto);
+            padding: 3px 6px;
+            border: 1px solid var(--cor-acento-principal);
+            font-size: 0.85em;
+            font-weight: 700;
+            white-space: nowrap; /* Evita quebras dentro da tecla */
+        }
+
+        /* 7. Rodapé */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #000000;
+            color: #8888AA;
+            margin-top: 30px;
+            border-top: 2px solid var(--cor-acento-principal);
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+
+        /* 8. Responsividade */
+        @media (min-width: 1024px) {
+            main {
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 1023px) {
+             /* A navbar fica estática em telas menores para não ocupar muito espaço vertical */
+             .navbar {
+                position: static;
+            }
+            
+            /* Os links da navbar ficam empilhados verticalmente */
+            .navbar ul {
+                flex-direction: column;
+                border-top: 2px solid var(--cor-borda); 
+            }
+            .navbar ul li a {
+                border-left: none;
+                border-right: none;
+                border-bottom: 1px solid #1a1a1a;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Guia do PlayStation 2 | 0.01</h1>
+    </header>
+    
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#opl">OPL</a></li>
+            <li><a href="#ferramentas">Ferramentas</a></li>
+            <li><a href="#ulaunchelf">uLaunchELF</a></li>
+            <li><a href="#funtertainment">FMCB</a></li>
+        </ul>
+    </nav>
+    <main id="content-area">
+
+        <section id="home" class="content-section">
+            <h2>STATUS DO SISTEMA HOMEBREW</h2>
+            <p>Seja bem-vindo à interface de configuração de ferramentas do PlayStation 2. Este portal foi criado para fornecer guias técnicos e detalhados sobre a utilização das principais aplicações que estendem a vida e funcionalidade do seu console.</p>
+            <p>O foco está na <strong>PRESERVAÇÃO DIGITAL</strong> e na otimização da experiência de jogo via mídias alternativas (USB, Rede e HD Interno).</p>
+            
+            <div class="info-box warning">
+                <strong>AVISO DE OPERAÇÃO CRÍTICA:</strong> Modificações no sistema podem levar à perda de dados. Faça o backup do seu Memory Card antes de qualquer procedimento avançado.
+            </div>
+            
+            
+        </section>
+
+        <section id="opl" class="content-section">
+            <h2>📀 OPEN PS2 LOADER (OPL)</h2>
+            <p>O <strong>OPL</strong> é a solução definitiva para carregar jogos. Ele é constantemente atualizado pela comunidade e oferece o melhor desempenho para a maioria dos títulos.</p>
+            
+            <div class="info-box tip">
+                <strong>RECOMENDAÇÃO:</strong> Use sempre a versão mais recente (Daily Build) para a melhor compatibilidade e as últimas correções do sistema.
+            </div>
+            
+            <h3>MÉTODOS DE CARREGAMENTO (TAXA DE DESEMPENHO)</h3>
+            <div class="card-container">
+                <div class="card">
+                    <h3>USB 1.1 (LENTO)</h3>
+                    <p>Fácil de configurar. Use o <strong>USBUtil</strong> para fragmentar os jogos. Não recomendado para títulos com muitas FMVs.</p>
+                </div>
+                <div class="card">
+                    <h3>REDE SMB (RECOMENDADO)</h3>
+                    <p>Velocidade próxima ao disco. Requer um cabo de rede e um PC/roteador configurado. Ideal para modelos Slim.</p>
+                </div>
+                <div class="card">
+                    <h3>HD INTERNO (MÁXIMO)</h3>
+                    <p>Exclusivo para modelos Fat com Adaptador de Rede. Velocidade superior ao disco original. Requer <strong>HDL Dump</strong>.</p>
+                </div>
+            </div>
+
+            <h3 id="opl-recursos">RECURSOS E CONFIGURAÇÕES AVANÇADAS</h3>
+            <p>O OPL oferece funcionalidades que aprimoram a experiência de jogo e a gestão de dados:</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <h3>VMC (VIRTUAL MEMORY CARD)</h3>
+                    <p>Salva o progresso do jogo em um arquivo (no USB/HDD/SMB), poupando o seu Memory Card físico.</p>
+                </div>
+                <div class="card">
+                    <h3>GSM (GRAPHIC MODE SELECTOR)</h3>
+                    <p>Permite forçar resoluções de vídeo (ex: 480p, 720p). Útil para adaptadores HDMI. (Compatibilidade limitada).</p>
+                </div>
+                <div class="card">
+                    <h3>IGR (IN-GAME RESET)</h3>
+                    <p>Combinação de botões (<kbd>L1</kbd>+<kbd>R1</kbd>+<kbd>L2</kbd>+<kbd>R2</kbd>+<kbd>Start</kbd>+<kbd>Select</kbd>) para reiniciar e voltar ao menu do OPL.</p>
+                </div>
+            </div>
+
+            <h3 id="opl-smb">GUIA DE CONEXÃO SMB (REDE)</h3>
+            <p>A configuração de rede exige que o IP do PS2 e do PC estejam na mesma sub-rede (ex: 192.168.1.x).</p>
+            
+            <h4>1. CONFIGURAÇÃO DO PC (SERVIDOR SMB)</h4>
+            <p><strong>PASTA COMPARTILHADA:</strong> Crie uma pasta raiz (ex: <code>C:\PS2SMB</code>) com as subpastas CD, DVD, VMC. Configure o Compartilhamento Avançado:</p>
+            <ul>
+                <li>Marque: "Compartilhar esta pasta".</li>
+                <li>Nome do Compartilhamento: <strong>SEM ESPAÇOS</strong> (Ex: <code>PS2GAMES</code>).</li>
+                <li>Permissões: Conceda "<strong>Leitura</strong>" ao grupo "Todos".</li>
+            </ul>
+
+            <h4>2. CONFIGURAÇÃO DO PS2 (OPL - CLIENTE)</h4>
+            <ol>
+                <li><strong>OPL:</strong> Em 'Network settings', defina o <strong>endereço IP estático</strong> (Ex: <code>192.168.1.100</code>).</li>
+                <li><strong>OPL:</strong> Em 'SMB Server', insira o <strong>IP do seu PC</strong> e o nome exato da pasta de compartilhamento: <code>PS2GAMES</code>.</li>
+                <li>User/Password: Deixe em <code>Guest</code> ou em branco.</li>
+                <li>Salve as mudanças e reinicie o OPL com "ETH device start mode" definido como <strong>Auto</strong>.</li>
+            </ol>
+            
+            <h3 id="opl-firewall">SOLUÇÃO DE PROBLEMAS: ERRO 300 (FIREWALL)</h3>
+            <p>O firewall do seu PC está bloqueando a porta de comunicação <strong>445 (SMB)</strong>. Crie uma exceção:</p>
+            <div class="code-block">
+                <strong>COMANDO CRÍTICO: ADICIONAR REGRA TCP PORTA 445</strong><br>
+                1. Firewall do Windows com Segurança Avançada.<br>
+                2. Regras de Entrada &rarr; Nova Regra.<br>
+                3. Tipo de Regra: <strong>Porta</strong> (Port).<br>
+                4. Protocolo: <strong>TCP</strong> e insira <strong>445</strong>.<br>
+                5. Ação: Selecione <strong>Permitir a conexão</strong>.
+            </div>
+
+            <h3 id="opl-hdd">ARMAZENAMENTO INTERNO (HDD – PS2 FAT)</h3>
+            <p>Método exclusivo para PS2 Fat com Adaptador de Rede. Use a ferramenta <strong>WinHIIP</strong> no PC para <strong>formatar</strong> o HD e <strong>transferir</strong> os jogos (ISOs).</p>
+            <div class="info-box warning">
+                <strong>AVISO:</strong> O HD é formatado no formato proprietário PS2/HDLoader e não é legível pelo Windows.
+            </div>
+            
+        </section>
+        
+        <section id="ferramentas" class="content-section">
+            <h2>⚙️ FERRAMENTAS E EMULAÇÃO (POPSTARTER)</h2>
+            <p>Gerenciamento de biblioteca e emulação de jogos de PlayStation 1.</p>
+            
+            <h3 id="ferramentas-pc">FERRAMENTAS ESSENCIAIS NO PC</h3>
+            <div class="card-container">
+                <div class="card">
+                    <h3>OPL MANAGER</h3>
+                    <p>Organiza jogos, renomeia ISOs no formato correto e gerencia/baixa capas (artes) automaticamente.</p>
+                </div>
+                <div class="card">
+                    <h3>SOFTWARE DE DIVISÃO DE ISO</h3>
+                    <p>Obrigatório para jogos maiores que 4GB se usar <strong>FAT32</strong> (USB/SMB).</p>
+                </div>
+                <div class="card">
+                    <h3>POPSTARTER TOOLS</h3>
+                    <p>Scripts e utilitários para converter jogos de PS1 (BIN/CUE) em arquivos <strong>VCD</strong>.</p>
+                </div>
+            </div>
+            
+            <h3 id="popstarter">POPSTARTER (EMULAÇÃO DE PS1)</h3>
+            <p>O POPStarter permite que jogos de PS1 sejam executados no seu PS2 (via OPL).</p>
+            <ul>
+                <li><strong>Conversão:</strong> BIN/CUE devem ser convertidos para <strong>VCD (Virtual CD)</strong>.</li>
+                <li><strong>Localização:</strong> VCDs devem ser colocados na pasta dedicada <strong><code>POPS</code></strong>.</li>
+                <li><strong>Nomenclatura:</strong> Nomeie no formato <code>XXX.NomeDoJogo.VCD</code>.</li>
+            </ul>
+
+            <div class="info-box tip">
+                <strong>DICA:</strong> Use arquivos de configuração (CFG) e CHEATS na pasta <code>POPS</code> para aplicar correções de compatibilidade.
+            </div>
+        </section>
+
+        <section id="ulaunchelf" class="content-section">
+            <h2>📁 ULAUNCHELF (uLE)</h2>
+            <p>O <strong>uLaunchELF</strong> é o utilitário essencial para manipular arquivos, instalar aplicativos (ELFs) e gerenciar saves. Atua como o sistema operacional subjacente.</p>
+            
+            <h3>COMANDOS DE NAVEGAÇÃO</h3>
+            <p>Crucial para mover arquivos entre Memory Card (<kbd>mc0:/</kbd>), USB (<kbd>mass:/</kbd>) e HD (<kbd>hdd0:/</kbd>).</p>
+            <div class="code-block">
+                Comando: <kbd>O</kbd> (Círculo) &rarr; <strong>EXECUTE</strong><br>
+                Comando: <kbd>X</kbd> (Cruz) &rarr; <strong>BACK</strong><br>
+                Comando: <kbd>R1</kbd> &rarr; <strong>FILE MANAGER</strong> (Copy, Paste, Delete)
+            </div>
+            
+            <div class="info-box tip">
+                <strong>DICA (BOOT.ELF):</strong> Copie <code>OPL.ELF</code> para a pasta <code>BOOT/</code> do Memory Card e renomeie-o para <code>BOOT.ELF</code> para autoinicialização.
+            </div>
+        </section>
+        
+        <section id="funtertainment" class="content-section">
+            <h2>🟢 FMCB / FUNTERTAINMENT</h2>
+            <p>O <strong>Free McBoot (FMCB)</strong> é um exploit que permite carregar softwares não assinados diretamente do Memory Card. O Funtertainment é uma versão pré-configurada com as principais ferramentas.</p>
+            
+            <h3>BENEFÍCIOS DO SYSTEM INIT</h3>
+            <div class="card-container">
+                <div class="card">
+                    <h3>AUTOINICIALIZAÇÃO</h3>
+                    <p>O console liga diretamente no menu principal (Dashboard), sem precisar de discos de boot.</p>
+                </div>
+                <div class="card">
+                    <h3>MENU UNIFICADO</h3>
+                    <p>Acesso rápido a todos os aplicativos: OPL, uLE, Emuladores e Ferramentas de diagnóstico.</p>
+                </div>
+                <div class="card">
+                    <h3>COMPATIBILIDADE</h3>
+                    <p>Funciona em quase todos os modelos de PS2 (Fat e Slim), exceto nos modelos super-slim mais recentes (série 9xxxx) com o BIOS 2.30.</p>
+                </div>
+            </div>
+            
+            
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Guia do PlayStation 2 | 0.01<br> Todo conteúdo é fornecido para fins educacionais e de preservação.</p>
+    </footer>
+
+</body>
+</html>
