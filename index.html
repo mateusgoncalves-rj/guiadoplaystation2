@@ -320,6 +320,25 @@
             text-transform: uppercase;
         }
 
+        .footer-btn {
+            background-color: transparent; /* Fundo transparente ou preto */
+            color: var(--cor-acento-principal); /* Texto no azul do menu PS2 */
+            border: 1px solid var(--cor-acento-principal); /* Borda fina */
+            padding: 8px 15px;
+            margin-bottom: 10px; 
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.1s, color 0.1s;
+            letter-spacing: 1px;
+            font-size: 0.8em;
+        }
+
+        .footer-btn:hover {
+            background-color: var(--cor-acento-principal); /* Fundo preenchido no hover */
+            color: var(--cor-fundo-principal); /* Texto fica escuro (Ultra Dark Blue) */
+        }
+
         /* 8. Responsividade */
         @media (min-width: 1024px) {
             main {
@@ -356,6 +375,7 @@
             <li><a href="#ferramentas">Ferramentas</a></li>
             <li><a href="#ulaunchelf">uLaunchELF</a></li>
             <li><a href="#funtertainment">FMCB</a></li>
+            <li><a href="https://github.com/mateusgoncalves-rj/guiadoplaystation2" target="_blank">Github</a></li>
         </ul>
     </nav>
     <main id="content-area">
@@ -536,8 +556,31 @@
     </main>
 
     <footer>
-        <p><a href="https://github.com/mateusgoncalves-rj/guiadoplaystation2" target="_blank">Guia do PlayStation 2</a> | 0.02<br> Todo conteúdo é fornecido para fins educacionais e de preservação.</p>
+        
+        <p><button id="download-page-btn" class="footer-btn">Baixar Guia Offline</button><br> Todo conteúdo é fornecido para fins educacionais e de preservação.</p>
     </footer>
 
+    <script>
+        document.getElementById('download-page-btn').addEventListener('click', function() {
+            // Obtém todo o conteúdo HTML do documento
+            var pageContent = document.documentElement.outerHTML;
+
+            // Cria um Blob (objeto de arquivo) com o conteúdo HTML e o tipo MIME
+            var blob = new Blob([pageContent], { type: 'text/html' });
+
+            // Cria um link temporário para o download
+            var downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'guia_do_playstation2_offline.html'; // Nome do arquivo sugerido
+
+            // Simula o clique no link para iniciar o download
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            // Libera o objeto URL
+            URL.revokeObjectURL(downloadLink.href);
+        });
+    </script>
 </body>
 </html>
