@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia do PlayStation 2 | 0.02</title>
+    <title>Guia do PlayStation 2 | 0.03</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,16 +12,16 @@
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/mateusgoncalves-rj/guiadoplaystation2/refs/heads/main/favicon.png">
     
     <style>
-        /* Variáveis de Cor (Estilo PS2 High-Contrast Digital APRIMORADO) */
+        /* Variáveis de Cor */
         :root {
-            --cor-fundo-principal: #000014; /* Ultra Dark Blue - Fundo da tela */
-            --cor-fundo-conteudo: #14142B; /* Fundo do Container (Console Panel) */
-            --cor-acento-principal: #00FAFA; /* Bright Cyan (Azul do Menu PS2) - MÁXIMO BRILHO */
-            --cor-acento-secundario: #55FF55; /* Bright Green (Luz de Status/Tip) */
-            --cor-texto: #FFFFFF; /* Texto de Alto Contraste */
-            --cor-texto-secundario: #CCCCCC; /* Cinza claro */
-            --cor-borda: #33334F; /* Borda digital */
-            --cor-alerta: #FFB300; /* Âmbar Gold - Aviso Crítico (Luz Standby) */
+            --cor-fundo-principal: #000014;
+            --cor-fundo-conteudo: #14142B;
+            --cor-acento-principal: #00FAFA;
+            --cor-acento-secundario: #55FF55; 
+            --cor-texto: #FFFFFF;
+            --cor-texto-secundario: #CCCCCC;
+            --cor-borda: #33334F;
+            --cor-alerta: #FFB300;
         }
 
         /* Reseta e Define Padrões Globais */
@@ -40,16 +40,19 @@
             font-family: 'Roboto Condensed', sans-serif;
             background-color: var(--cor-fundo-principal); 
             color: var(--cor-texto-secundario);
-            line-height: 1.4; 
+            line-height: 1.5; 
             font-size: 17px;
             background-image: radial-gradient(circle at center, rgba(0,0,50,0.5) 0%, var(--cor-fundo-principal) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         p {
             margin-bottom: 15px;
         }
         
-        /* 1. Header Simplificado */
+        /* 1. Header */
         header {
             background-color: #000000;
             color: var(--cor-texto);
@@ -84,6 +87,7 @@
             justify-content: center;
             padding: 0;
             margin: 0;
+            flex-wrap: wrap; /* Permite que itens quebrem linha se necessário */
         }
 
         .navbar ul li {
@@ -98,13 +102,14 @@
 
         .navbar ul li a {
             display: block;
-            padding: 10px 15px;
+            padding: 12px 15px;
             color: var(--cor-texto-secundario);
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 1px;
             border-left: 1px solid #1a1a1a;
             border-right: 1px solid #1a1a1a;
+            font-size: 0.95em;
         }
 
         .navbar ul li a:hover {
@@ -117,6 +122,7 @@
         main {
             padding: 20px;
             max-width: 950px;
+            width: 100%;
             margin: 0 auto; 
             flex-grow: 1;
         }
@@ -127,6 +133,7 @@
             margin-bottom: 30px;
             border: 3px solid var(--cor-borda);
             scroll-margin-top: 60px; 
+            overflow-wrap: break-word; /* Evita que urls longas quebrem o layout */
         }
 
         h2 {
@@ -137,14 +144,15 @@
             padding-left: 15px;
             margin-bottom: 20px;
             text-transform: uppercase;
+            line-height: 1.2;
         }
 
         h3 {
-            font-size: 1.4em;
+            font-size: 1.3em;
             font-weight: 700;
             color: var(--cor-texto);
             margin-top: 25px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             padding-bottom: 5px;
             border-bottom: 1px solid var(--cor-borda); 
         }
@@ -171,15 +179,17 @@
         }
 
         .dl-link {
-            font-size: 0.8em;
-            margin-left: 10px;
+            font-size: 0.75em;
+            margin-left: 5px;
             background: #003333;
-            padding: 2px 8px;
+            padding: 3px 6px;
             border: 1px solid var(--cor-acento-principal);
             color: var(--cor-acento-principal);
             text-transform: uppercase;
             text-decoration: none;
             display: inline-block;
+            white-space: nowrap;
+            vertical-align: middle;
         }
         .dl-link:hover {
             background: var(--cor-acento-principal);
@@ -190,13 +200,13 @@
         /* 3. Listas */
         ul {
             list-style: none;
-            padding-left: 20px;
+            padding-left: 15px;
             margin-bottom: 15px;
         }
         ul li {
             padding-left: 15px;
             position: relative;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
             font-weight: 400;
         }
         ul li::before {
@@ -206,7 +216,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            font-size: 0.8em;
+            font-size: 0.9em;
         }
         
         ol {
@@ -217,9 +227,9 @@
         }
         ol li {
             counter-increment: step-counter;
-            padding-left: 40px;
+            padding-left: 35px;
             position: relative;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-weight: 400;
         }
         ol li::before {
@@ -229,23 +239,27 @@
             position: absolute;
             left: 0;
             top: 0;
-            font-size: 1.1em;
+            font-size: 1em;
             border: 1px solid var(--cor-acento-secundario);
-            padding: 0 5px;
-            margin-right: 10px;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: #103b10;
         }
 
         /* 4. Cards */
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Melhor responsividade: cards encolhem até 260px antes de quebrar linha */
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
         .card {
             background: #2a2a44; 
-            padding: 15px;
+            padding: 20px;
             border: 1px solid var(--cor-acento-principal); 
             transition: background-color 0.1s ease, border-color 0.1s ease;
         }
@@ -257,7 +271,7 @@
             font-size: 1.1em;
             color: var(--cor-acento-principal);
             margin-top: 0;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
             border-bottom: 1px solid var(--cor-borda);
         }
 
@@ -265,7 +279,7 @@
         .info-box {
             padding: 15px;
             margin: 20px 0;
-            font-size: 0.9em;
+            font-size: 0.95em;
             line-height: 1.5;
             border: 2px solid; 
         }
@@ -289,7 +303,8 @@
             font-family: 'Consolas', 'Courier New', monospace;
             font-size: 0.9em;
             color: var(--cor-acento-secundario); 
-            white-space: pre-wrap; 
+            white-space: pre-wrap;
+            word-wrap: break-word; 
         }
         
         #opl-firewall + .code-block {
@@ -301,63 +316,110 @@
         kbd {
             background-color: #333355;
             color: var(--cor-texto);
-            padding: 3px 6px;
+            padding: 2px 5px;
             border: 1px solid var(--cor-acento-principal);
-            font-size: 0.85em;
+            border-radius: 3px;
+            font-size: 0.8em;
             font-weight: 700;
             white-space: nowrap; 
+            display: inline-block;
+            margin: 0 2px;
         }
 
         /* 7. Rodapé */
         footer {
             text-align: center;
-            padding: 15px;
+            padding: 25px 15px;
             background-color: #000000;
             color: #8888AA;
-            margin-top: 30px;
+            margin-top: auto; /* Mantém o rodapé no fundo se o conteúdo for curto */
             border-top: 2px solid var(--cor-acento-principal);
-            font-size: 0.8em;
+            font-size: 0.9em;
             text-transform: uppercase;
         }
 
         .footer-btn {
-            background-color: transparent; /* Fundo transparente ou preto */
-            color: var(--cor-acento-principal); /* Texto no azul do menu PS2 */
-            border: 1px solid var(--cor-acento-principal); /* Borda fina */
-            padding: 8px 15px;
-            margin-bottom: 10px; 
+            background-color: transparent;
+            color: var(--cor-acento-principal);
+            border: 1px solid var(--cor-acento-principal);
+            padding: 10px 20px;
+            margin-bottom: 15px; 
             font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
             transition: background-color 0.1s, color 0.1s;
             letter-spacing: 1px;
-            font-size: 0.8em;
+            font-size: 0.9em;
         }
 
         .footer-btn:hover {
-            background-color: var(--cor-acento-principal); /* Fundo preenchido no hover */
-            color: var(--cor-fundo-principal); /* Texto fica escuro (Ultra Dark Blue) */
+            background-color: var(--cor-acento-principal);
+            color: var(--cor-fundo-principal);
         }
 
-        /* 8. Responsividade */
-        @media (min-width: 1024px) {
-            main {
-                padding: 40px 20px;
+        /* 8. Responsividade Avançada */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px; /* Ajuste base de fonte */
             }
-        }
-        
-        @media (max-width: 1023px) {
-             .navbar {
+
+            header {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.5em; /* Título menor */
+            }
+
+            .navbar {
                 position: static;
+                border-bottom: none;
             }
+
             .navbar ul {
                 flex-direction: column;
-                border-top: 2px solid var(--cor-borda); 
+                border-top: 1px solid var(--cor-borda);
             }
+
+            .navbar ul li {
+                width: 100%;
+                text-align: center;
+            }
+
             .navbar ul li a {
-                border-left: none;
-                border-right: none;
-                border-bottom: 1px solid #1a1a1a;
+                border: none;
+                border-bottom: 1px solid #222;
+                padding: 15px; /* Área de toque maior */
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            .content-section {
+                padding: 20px 15px; /* Menos padding lateral para ganhar espaço */
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding-left: 10px;
+                border-left-width: 4px;
+            }
+            
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr; /* Coluna única em mobile */
+            }
+
+            .dl-link {
+                display: block; /* Botão de download desce para nova linha em mobile */
+                width: fit-content;
+                margin: 5px 0 0 0;
+                text-align: center;
             }
         }
     </style>
@@ -365,7 +427,7 @@
 <body>
 
     <header>
-        <h1>Guia do PlayStation 2 | 0.02</h1>
+        <h1>Guia do PlayStation 2 | 0.03</h1>
     </header>
     
     <nav class="navbar">
@@ -454,13 +516,12 @@
             <h3 id="opl-firewall">SOLUÇÃO DE PROBLEMAS: ERRO 300 (FIREWALL)</h3>
             <p>O firewall do seu PC está bloqueando a porta de comunicação <strong>445 (SMB)</strong>. Crie uma exceção:</p>
             <div class="code-block">
-                <strong>COMANDO CRÍTICO: ADICIONAR REGRA TCP PORTA 445</strong><br>
-                1. Firewall do Windows com Segurança Avançada.<br>
-                2. Regras de Entrada &rarr; Nova Regra.<br>
-                3. Tipo de Regra: <strong>Porta</strong> (Port).<br>
-                4. Protocolo: <strong>TCP</strong> e insira <strong>445</strong>.<br>
-                5. Ação: Selecione <strong>Permitir a conexão</strong>.
-            </div>
+<strong>COMANDO CRÍTICO: ADICIONAR REGRA TCP PORTA 445</strong>
+1. Firewall do Windows com Segurança Avançada.
+2. Regras de Entrada &rarr; Nova Regra.
+3. Tipo de Regra: <strong>Porta</strong> (Port).
+4. Protocolo: <strong>TCP</strong> e insira <strong>445</strong>.
+5. Ação: Selecione <strong>Permitir a conexão</strong>.</div>
 
             <h3 id="opl-hdd">ARMAZENAMENTO INTERNO (HDD – PS2 FAT)</h3>
             <p>Método exclusivo para PS2 Fat com Adaptador de Rede. Use a ferramenta <strong>WinHIIP</strong> <a href="https://hardlevel.com.br/download/winhiip-1-7-6/?wpdmdl=281779&refresh=6932ffff6d87d1764950015" target="_blank" class="dl-link">[Download]</a> no PC para <strong>formatar</strong> o HD e <strong>transferir</strong> os jogos (ISOs).</p>
@@ -522,10 +583,9 @@
             <h3>COMANDOS DE NAVEGAÇÃO</h3>
             <p>Crucial para mover arquivos entre Memory Card (<kbd>mc0:/</kbd>), USB (<kbd>mass:/</kbd>) e HD (<kbd>hdd0:/</kbd>).</p>
             <div class="code-block">
-                Comando: <kbd>O</kbd> (Círculo) &rarr; <strong>EXECUTE</strong><br>
-                Comando: <kbd>X</kbd> (Cruz) &rarr; <strong>BACK</strong><br>
-                Comando: <kbd>R1</kbd> &rarr; <strong>FILE MANAGER</strong> (Copy, Paste, Delete)
-            </div>
+Comando: <kbd>O</kbd> (Círculo) &rarr; <strong>EXECUTE</strong>
+Comando: <kbd>X</kbd> (Cruz) &rarr; <strong>BACK</strong>
+Comando: <kbd>R1</kbd> &rarr; <strong>FILE MANAGER</strong> (Copy, Paste, Delete)</div>
             
             <div class="info-box tip">
                 <strong>DICA (BOOT.ELF):</strong> Copie <code>OPL.ELF</code> para a pasta <code>BOOT/</code> do Memory Card e renomeie-o para <code>BOOT.ELF</code> para autoinicialização.
@@ -556,29 +616,39 @@
     </main>
 
     <footer>
-        
-        <p><button id="download-page-btn" class="footer-btn">Baixar Guia Offline</button><br> Todo conteúdo é fornecido para fins educacionais e de preservação.</p>
+        <p><button id="download-page-btn" class="footer-btn">Baixar Guia Offline</button><br>
+        Todo conteúdo é fornecido para fins educacionais e de preservação.</p>
     </footer>
 
     <script>
         document.getElementById('download-page-btn').addEventListener('click', function() {
-            // Obtém todo o conteúdo HTML do documento
-            var pageContent = document.documentElement.outerHTML;
+            // 1. Clona todo o elemento raiz (html) para não modificar a página que o usuário está vendo
+            var clone = document.documentElement.cloneNode(true);
 
-            // Cria um Blob (objeto de arquivo) com o conteúdo HTML e o tipo MIME
+            // 2. Encontra o botão DENTRO do clone
+            var btnNoClone = clone.querySelector('#download-page-btn');
+
+            // 3. Remove o botão do clone (e o <br> se desejar limpar totalmente)
+            if (btnNoClone) {
+                // Remove o <br> que vem logo após o botão, se existir, para evitar espaço extra
+                if (btnNoClone.nextElementSibling && btnNoClone.nextElementSibling.tagName === 'BR') {
+                    btnNoClone.nextElementSibling.remove();
+                }
+                btnNoClone.remove();
+            }
+
+            // 4. Obtém o HTML do clone modificado
+            var pageContent = clone.outerHTML;
+
+            // 5. Processo de Download
             var blob = new Blob([pageContent], { type: 'text/html' });
-
-            // Cria um link temporário para o download
             var downloadLink = document.createElement('a');
             downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = 'guia_do_playstation2_offline.html'; // Nome do arquivo sugerido
+            downloadLink.download = 'guia_do_playstation2_offline.html';
 
-            // Simula o clique no link para iniciar o download
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
-
-            // Libera o objeto URL
             URL.revokeObjectURL(downloadLink.href);
         });
     </script>
